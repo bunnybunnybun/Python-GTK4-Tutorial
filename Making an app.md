@@ -4,7 +4,7 @@ This is the second guide in a series. If you haven't already gone through the fi
 
 # Python GTK4 Tutorial
 
-The purpose of this guide is to be a beginner friendly introduction to making desktop apps with Python using GTK4. This guide only expects you to have a *very* basic understanding of programming in Python. If you don't understand everything, that's fine! Coding can feel very overwhelming at first, it's normal.
+The purpose of this guide is to be a beginner friendly introduction to making desktop apps with Python using GTK4. GTK is a cross platform library that allows you to make apps! When talking about coding, libraries are basically add-ons to the programming language you are using; They give you access to more functionality! This guide only expects you to have a *very* basic understanding of programming in Python. If you don't understand everything in this guide, that's fine! Coding can feel very overwhelming at first, it's normal.
 
 ## Step one: creating the project
 
@@ -23,7 +23,7 @@ However, if it runs without giving you any errors, then that means you already h
 
 ## Step two: installing the required libraries
 
-First of all, you will need python3. This is likely preinsalled on your system, but [here's](https://realpython.com/installing-python/) the most comprehensive guide I could find on how to install it in case it's not preinstalled.
+First of all, you will need python3. This is likely pre-insalled on your system, but [here's](https://realpython.com/installing-python/) the most comprehensive guide I could find on how to install it in case it's not pre-installed.
 
 You will of course need GTK itself, but also PyGObject, which allows you to *use* GTK in your python application. You can install these through PyPI, Python's package manager. If you are on Linux, you also have the option of installing them through your operating system's package manager instead, which I recommend. Instructions for both methods can be found on [the PyGObject website](https://pygobject.gnome.org/getting_started.html).
 
