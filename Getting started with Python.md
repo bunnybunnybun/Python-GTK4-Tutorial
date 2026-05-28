@@ -4,7 +4,7 @@ Make sure you have Hackatime setup before starting! Hackatime is what you use to
 
 # Getting started with Python
 
-This will teach you the very basics of Python! Python is a very popular programming language, and it's widely considered to be one of the best languages for beginners to learn how to code! Before we start with Python though, we need to setup Githubⓘ.
+This will teach you the very basics of Python! Python is a very popular programming language, and it's widely considered to be one of the best languages for beginners to learn how to code! Before we start with Python though, we need to setup Github.
 
 ## Setting up Git and Github
 
@@ -62,3 +62,14 @@ print("Hello " + name)
 What's that do? The first line will ask for user input, and then set the value of the variable called `name` to whatever the user entered. Everything after the hashtag symbol (#) is considered a comment, which doesn't do anything. You can write anything there, it is just meant for leaving a note for yourself, to help you understand the code.
 
 The second line prints out the text "Hello " plus the value of the `name` variable. Try running the new script by typing `python3 main.py` in the terminal again! It should ask you "What's your name". Just type something and press enter, and it will say hello to you.
+
+I want the script to compliment me, but not other people, as a way to boost my ego. I can do this by using an if statement to check whether the name that the user entered is my name, and if it is, it will compliment them, and if not, it will say "Hello" like before.
+
+Try it! Replace the print statement with this (but keep the first line):
+
+```python
+if name == "Carlisle": # Notice that here we used two equal signs (=), whereas in the first line we only used one. Whenever you are SETTING the value of a variable, you use one =, but when you are comparing the value, like we are in this line of code, you use two = signs.
+    print("Hi, you are such an awesome person!")
+else:
+    print("Hello " + name)
+```

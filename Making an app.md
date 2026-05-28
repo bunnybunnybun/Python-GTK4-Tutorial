@@ -10,7 +10,7 @@ The purpose of this guide is to be a beginner friendly introduction to making de
 
 First, make a folder for your project anywhere on your computer. Name it something that makes it clear what it's for. Inside the folder, create a file called main.py, this will be the main file of our app. The name of the file doesn't actually matter, but that's what I'll use in this tutorial. Open up the file in a text editor, and write this:
 
-```
+```python
 import gi  
 
 gi.require\_version("Gtk", "4.0")  
@@ -33,7 +33,7 @@ Now run the program we created earlier to make sure that the libraries are insta
 
 Ok, let's start by making a blank window. Add this to the main.py file after all of the imports:
 
-```
+```python
 class MyApplication(Gtk.Application):  
     def \_\_init\_\_(self):  
         super().\_\_init\_\_(application\_id="com.example.ExampleWeatherApp")  
@@ -63,7 +63,7 @@ Then, to add it to the box, do `self.main\_box.append(self.button)`.
 
 Your full code should now look something like this:
 
-```
+```python
 import gi  
 gi.require\_version("Gtk", "4.0")  
 from gi.repository import GLib, Gtk, Gdk  
@@ -101,17 +101,17 @@ Both the text label and the button are touching each other, along with the sides
 
 Create a new file called style.css. This is where we will put the css code. In this new file, try writing:
 
-```
-button \{  
+```css
+button {  
     margin: 30px;  
-\}
+}
 ```
 
 That will put 30 pixels of space on each side of the button. If you just wanted to put space on just one side of the button, you could do `margin-left` or `margin-top` etc for whichever side you want.
 
 In order for it to actually work, you need to tell the app to use the css file. Near the top of the main.py file, right after the imports, add this:
 
-```
+```python
 css\_provider = Gtk.CssProvider()  
 css\_provider.load\_from\_path('style.css')  
 Gtk.StyleContext.add\_provider\_for\_display(Gdk.Display.get\_default(), css\_provider, Gtk.STYLE\_PROVIDER\_PRIORITY\_APPLICATION)
@@ -133,7 +133,7 @@ What does that do? It makes it so that whenever the button is clicked, it will t
 
 In case all that wasn't clear, your code should now look something like this:
 
-```
+```python
 class MyApplication(Gtk.Application):  
     def \_\_init\_\_(self):  
         super().\_\_init\_\_(application\_id="com.example.ExampleWeatherApp")  
