@@ -4,7 +4,9 @@ This is the second guide in a series. If you haven't already gone through the fi
 
 # Python GTK4 Tutorial
 
-The purpose of this guide is to be a beginner friendly introduction to making desktop apps with Python using GTK4. GTK is a cross platform library that allows you to make apps! When talking about coding, libraries are basically add-ons to the programming language you are using; They give you access to more functionality! This guide only expects you to have a *very* basic understanding of programming in Python. If you don't understand everything in this guide, that's fine! Coding can feel very overwhelming at first, it's normal.
+The purpose of this guide is to be a beginner friendly introduction to making desktop apps with Python using GTK4. GTK is a cross platform library that allows you to make apps! When talking about coding, libraries are basically add-ons to the programming language you are using; They give you access to more functionality!
+
+This guide only expects you to have a *very* basic understanding of programming in Python. If you don't understand everything in this guide, that's fine! Coding can feel very overwhelming at first, it's normal.
 
 ## Step one: creating the project
 
@@ -13,7 +15,7 @@ First, make a folder for your project anywhere on your computer. Name it somethi
 ```python
 import gi  
 
-gi.require\_version("Gtk", "4.0")  
+gi.require_version("Gtk", "4.0")  
 from gi.repository import GLib, Gtk, Gdk
 ```
 
@@ -35,16 +37,16 @@ Ok, let's start by making a blank window. Add this to the main.py file after all
 
 ```python
 class MyApplication(Gtk.Application):  
-    def \_\_init\_\_(self):  
-        super().\_\_init\_\_(application\_id="com.example.ExampleWeatherApp")  
-        GLib.set\_application\_name('ExampleApp')  
+    def __init__(self):  
+        super().__init__(application_id="com.example.ExampleWeatherApp")  
+        GLib.set_application_name('ExampleApp')  
 
-    def do\_activate(self):  
-        window = Gtk.ApplicationWindow(application=self, title="My First App") \# The title is what name will be shown for the application in the title bar of the window. Change this to whatever you want!  
+    def do_activate(self):  
+        window = Gtk.ApplicationWindow(application=self, title="My First App") # The title is what name will be shown for the application in the title bar of the window. Change this to whatever you want!  
         window.present()  
 
 app = MyApplication()  
-app.run() \# You should generally make sure this line always remains at the end of your file.
+app.run() # You should generally make sure this line always remains at the end of your file.
 ```
 
 It's okay if you don't understand everything that we just wrote! Try saving and running the program, you should see a blank window appear.
@@ -55,30 +57,30 @@ GTK apps are made by combining widgets. There are lots of types of widgets, such
 
 The first widget you add should always be a container widgetⓘ, so you can put more widgets inside it. I usually start with the Box widget.
 
-To create your box widget, right before the `window.present()` line in your code, add this line: `self.main\_box = Gtk.Box()`. What did we just do? We created a variable named self.main\_box, and set it to equal a box widget.  
-Now, we've created a box, but we have to actually add it to the window. To do that, add this line right after the one we just added: `window.set\_child(self.main\_box)`.
+To create your box widget, right before the `window.present()` line in your code, add this line: `self.main_box = Gtk.Box()`. What did we just do? We created a variable named self.main_box, and set it to equal a box widget.  
+Now, we've created a box, but we have to actually add it to the window. To do that, add this line right after the one we just added: `window.set_child(self.main_box)`.
 
-Now run the program. You should see... That the window is still blank. Remember that the Box widget is just a container, all it does is help us specify where other widgets go. So... Add some more widgets inside it! How about a button? We can create it exactly like we did with the box. Just do `self.button = Gtk.Button()` instead of `self.main\_box = Gtk.Box()`.  
-Then, to add it to the box, do `self.main\_box.append(self.button)`.
+Now run the program. You should see... That the window is still blank. Remember that the Box widget is just a container, all it does is help us specify where other widgets go. So... Add some more widgets inside it! How about a button? We can create it exactly like we did with the box. Just do `self.button = Gtk.Button()` instead of `self.main_box = Gtk.Box()`.  
+Then, to add it to the box, do `self.main_box.append(self.button)`.
 
 Your full code should now look something like this:
 
 ```python
 import gi  
-gi.require\_version("Gtk", "4.0")  
+gi.require_version("Gtk", "4.0")  
 from gi.repository import GLib, Gtk, Gdk  
 
 class MyApplication(Gtk.Application):  
-    def \_\_init\_\_(self):  
-        super().\_\_init\_\_(application\_id="com.example.ExampleWeatherApp")  
-        GLib.set\_application\_name('ExampleApp')  
+    def __init__(self):  
+        super().__init__(application_id="com.example.ExampleWeatherApp")  
+        GLib.set_application_name('ExampleApp')  
 
-    def do\_activate(self):  
+    def do_activate(self):  
         window = Gtk.ApplicationWindow(application=self, title="My First App")  
-        self.main\_box = Gtk.Box()  
+        self.main_box = Gtk.Box()  
         self.button = Gtk.Button()  
-        self.main\_box.append(self.button)  
-        window.set\_child(self.main\_box)  
+        self.main_box.append(self.button)  
+        window.set_child(self.main_box)  
         window.present()  
 
 app = MyApplication()  
@@ -89,7 +91,7 @@ Run the program, you should now see a button on the left side of the window! We'
 
 If you add the label below the line where you added the button, it will appear *after* the button. If you put it above the line where you added the button, it will appear *before* the button.
 
-Currently, widgets in the Box container are being placed horizontally. We can change the Box to be vertical by changing this line: `self.main\_box = Gtk.Box()` to this: `self.main\_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)`. Try it and see what happens!
+Currently, widgets in the Box container are being placed horizontally. We can change the Box to be vertical by changing this line: `self.main_box = Gtk.Box()` to this: `self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)`. Try it and see what happens!
 
 ## Step 5: Customize!
 
@@ -112,9 +114,9 @@ That will put 30 pixels of space on each side of the button. If you just wanted 
 In order for it to actually work, you need to tell the app to use the css file. Near the top of the main.py file, right after the imports, add this:
 
 ```python
-css\_provider = Gtk.CssProvider()  
-css\_provider.load\_from\_path('style.css')  
-Gtk.StyleContext.add\_provider\_for\_display(Gdk.Display.get\_default(), css\_provider, Gtk.STYLE\_PROVIDER\_PRIORITY\_APPLICATION)
+css_provider = Gtk.CssProvider()  
+css_provider.load_from_path('style.css')  
+Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 ```
 
 Remember to save both the files, and see if it worked.
@@ -127,37 +129,37 @@ You can also change the color of the *text* like this: `color: red;`
 
 Let's make the button actually do something! We'll start by making it print something to the terminal when you click the button.
 
-Add this line after the part where you created the button widget: `self.button.connect('clicked', self.button\_clicked)`
+Add this line after the part where you created the button widget: `self.button.connect('clicked', self.button_clicked)`
 
-What does that do? It makes it so that whenever the button is clicked, it will trigger the function called `self.button\_clicked`. But of course, we haven't created a function called `self.button\_clicked` yet, so let's make it! I want you to create the function inside of the `MyApplication` class, but outside of the `do\_activate` function. Create the function like this `def button\_clicked(self, widget):`, then put a print statement in the function to inform us of whether the function is actually run when we press the button.
+What does that do? It makes it so that whenever the button is clicked, it will trigger the function called `self.button_clicked`. But of course, we haven't created a function called `self.button_clicked` yet, so let's make it! I want you to create the function inside of the `MyApplication` class, but outside of the `do_activate` function. Create the function like this `def button_clicked(self, widget):`, then put a print statement in the function to inform us of whether the function is actually run when we press the button.
 
 In case all that wasn't clear, your code should now look something like this:
 
 ```python
 class MyApplication(Gtk.Application):  
-    def \_\_init\_\_(self):  
-        super().\_\_init\_\_(application\_id="com.example.ExampleWeatherApp")  
-        GLib.set\_application\_name('ExampleApp')  
+    def __init__(self):  
+        super().__init__(application_id="com.example.ExampleWeatherApp")  
+        GLib.set_application_name('ExampleApp')  
 
-    def do\_activate(self):  
+    def do_activate(self):  
         window = Gtk.ApplicationWindow(application=self, title="My First App")  
-        self.main\_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)  
+        self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)  
         self.button = Gtk.Button(label="Put whatever you want it to say!")  
-        self.button.connect('clicked', self.button\_clicked)  
+        self.button.connect('clicked', self.button_clicked)  
         self.label = Gtk.Label(label="Put whatever text you want here")  
-        self.main\_box.append(self.label)  
-        self.main\_box.append(self.button)  
-        window.set\_child(self.main\_box)  
+        self.main_box.append(self.label)  
+        self.main_box.append(self.button)  
+        window.set_child(self.main_box)  
         window.present()  
 
-    def button\_clicked(self, widget):  
+    def button_clicked(self, widget):  
         print("Button clicked")
 ```
 
 Let's try making a counter, where it adds 1 every time you press the button, and have it show the number in the app instead of printing it to the terminal.
 
-First, we need to store the number of times we've clicked the button in a variable. In the `MyApplication` class, we made a function called `\_\_init\_\_`. The `\_\_init\_\_` function is run immediately when the class is created. In very simple terms, `\_\_init\_\_` is where you setup the classes attributes. Create the variable inside of the `\_\_init\_\_` function, like this: `self.times\_pressed = 0`
+First, we need to store the number of times we've clicked the button in a variable. In the `MyApplication` class, we made a function called `__init__`. The `__init__` function is run immediately when the class is created. In very simple terms, `__init__` is where you setup the classes attributes. Create the variable inside of the `__init__` function, like this: `self.times_pressed = 0`
 
-To make the number go up each time you press the button, you *could* (inside of the `button\_clicked` function) do `self.times\_pressed = self.times\_pressed + 1`, but there is a better way. Doing `self.times\_pressed += 1` does the exact same thing, but is written more concisely.
+To make the number go up each time you press the button, you *could* (inside of the `button_clicked` function) do `self.times_pressed = self.times_pressed + 1`, but there is a better way. Doing `self.times_pressed += 1` does the exact same thing, but is written more concisely.
 
-Now, to actually make it display the number, let's make it update the text on the label widget to show the number. Right after the part where you add 1 to the variable: `self.label.set\_text(str(self.times\_pressed))`
+Now, to actually make it display the number, let's make it update the text on the label widget to show the number. Right after the part where you add 1 to the variable: `self.label.set_text(str(self.times_pressed))`
