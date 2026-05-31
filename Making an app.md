@@ -1,6 +1,4 @@
-## This guide is still a work in progress!
-
-This is the second guide in a series. If you haven't already gone through the first guide, do it now [here](regular_python_guide.html).
+## This guide is a work in progress!
 
 # Python GTK4 Tutorial
 
